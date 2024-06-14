@@ -8,3 +8,12 @@ We use this to install the necessary dependencies. Therefore, in the Command Lin
 conda env create --name=object-recognizer-env --file environment.yml
 
 Then choose the correct python interpreter in your IDE of the newly created environment.
+
+
+You can install new dependencies by
+
+conda install ...
+
+and export your dependencies into the environment.yml with:
+
+conda env export --no-builds -c conda-forge
