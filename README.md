@@ -1,25 +1,29 @@
 # object-recognizer
 
+## Setup workspace
 
-Download and install the cli tool conda.
+Download and install python 3.10.14. This download should include pythons package manager "pip". Verify this by typing in the command line:
 
-We use this to install the necessary dependencies. Therefore, in the Command Line:
+`pip --version`
 
-conda env create --file environment.yml --name=recognizer-env
+We use pip to install the necessary dependencies. 
+First we setup a virtual environment, where the dependencies will be saved to. This is to not clash with any global dependencies AND make the environment repoducable.
+The necessary dependencies and version are listed in the requirements.txt file.
+### Create the virtual environment
+`python -m venv object-recognizer-env`
+
+### Activate the virtual environment
+On Windows then activate the environment with:
+`object-recognizer-env\Scripts\activate`
+
+On Linux/macOs:
+`source object-recognizer-env/bin/activate`
+
+### Install the dependencies
+Then, in the Command Line type:
+`pip install -r requirements.txt`
 
 Then choose the correct python interpreter in your IDE of the newly created environment.
-
-
-You can install new dependencies by
-
-conda install ...
-
-and export your dependencies into the environment.yml with:
-
-conda env export --no-builds -c conda-forge
-
-
-
 
 Now download the model from:
 
@@ -28,3 +32,13 @@ https://github.com/OlafenwaMoses/ImageAI/releases/download/3.0.0-pretrained/reti
 rename it to model_retinanet.pth and put it at root level of project.
 
 You now should be able to run main.py and get printed out the result from object recognition in the given image.
+
+## Further workflow
+You can install new dependencies in a terminal with the activated virtual environment by
+
+`pip install NAME_OF_LIBRARY`
+
+and export your current env:
+
+`pip freeze > requirements.txt`.
+
