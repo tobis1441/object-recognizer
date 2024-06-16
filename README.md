@@ -42,3 +42,14 @@ and export your current env:
 
 `pip freeze > requirements.txt`.
 
+
+
+# Run as container
+
+Build the image by:
+
+`docker build -t object-recognizer .`
+
+Then run the service via:
+
+`docker run -p 8000:8000 -d object-recognizer`
