@@ -1,6 +1,27 @@
 from imageai.Detection import ObjectDetection
 import os
-print("Importing done..")
+
+from fastapi import FastAPI, File, UploadFile, HTTPException
+from pydantic import BaseModel
+
+app = FastAPI()
+
+@app.get("/")
+async def hello_world():
+    return {"result": "Hello World!"}
+
+@app.post("/analyze/")
+async def analyze_image(file: UploadFile = File(...)):
+    try:
+        image_data = await file.read()
+        # Perform image analysis
+        return {"result": "analyzed"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
 def run():
@@ -21,5 +42,5 @@ def run():
             print(detection["name"], " : ", detection["percentage_probability"])
 
 
-if __name__ == "__main__":
-    run()
+#if __name__ == "__main__":
+#    run()
