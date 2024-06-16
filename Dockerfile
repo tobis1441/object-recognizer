@@ -18,4 +18,4 @@ COPY src .
 
 EXPOSE 8000
 
-CMD ["python", "src/main/main.py"]
+CMD ["python", "main/main.py"]
